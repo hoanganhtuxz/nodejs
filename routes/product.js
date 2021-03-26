@@ -1,22 +1,21 @@
 import express from 'express';
-const router = express.Router();
-// list product
-router.get('/products', (req, res) => {
-    res.json({
-        message: "Successfully"
-    })
-});
-// product detail
-router.get('/product/:id', (req, res) => {
-    res.json({
-        id: req.params.id,
-        name: 'product 1'
-    })
-});
-// add product
-router.post('/productAdd', (req, res) => {
-    console.log(req.body)
-});
-
+import { update, list, create, productById, read, remove } from '../controllers/product';
 ///
+const router = express.Router();
+
+
+// add product
+router.post('/productAdd', create);
+// list product
+router.get('/productList', list);
+// detail product
+router.get('/product/:productId', read);
+// update product
+router.put('/productUpdate/:productId', update);
+// delete product
+router.delete('/productDelete/:productId', remove);
+//param
+router.param('productId', productById);
+
+
 module.exports = router;
