@@ -4,8 +4,9 @@ const categorySchema = mongoose.Schema({
         type: String,
         strim: true,
         maxLength: 32,
-        required: true
+        required: true,
+        unique: true
     }
 
-}, { timeStamp: true });
-module.exports = mongoose.model("category", categorySchema)
+}, { timestamps: true });
+module.exports = mongoose.model("Category", categorySchema)
